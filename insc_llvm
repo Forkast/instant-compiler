@@ -1,0 +1,9 @@
+#!/bin/bash
+
+FILENAME=$1
+FILE_NEXT=${FILENAME%.*}
+DIRNAME=$(dirname $FILENAME)
+
+./build/LLVMCompiler ${FILENAME}
+llvm-as -o ${FILE_NEXT}.o ${FILE_NEXT}.ll
+llvm-link -o ${FILE_NEXT}.bc ${FILE_NEXT}.o lib/runtime.bc

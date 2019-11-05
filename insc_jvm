@@ -1,0 +1,9 @@
+#!/bin/bash
+
+FILENAME=$1
+FILE_NEXT=${FILENAME%.*}
+DIRNAME=$(dirname $FILENAME)
+
+./build/JVMCompiler ${FILENAME}
+
+java -jar lib/jasmin.jar ${FILE_NEXT}.j -d $DIRNAME

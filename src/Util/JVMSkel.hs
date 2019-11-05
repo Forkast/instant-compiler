@@ -13,13 +13,13 @@ type Result = State (Map Ident Integer) Value
 counterName :: String
 counterName = "=counter"
 
-transProgram :: Program -> Result
-transProgram x = do
-  s1 <- return emitClass
+transProgram :: String -> Program -> Result
+transProgram clas x = do
+  s1 <- return $ emitClass clas
   (s3, i) <- transProg x
   m <- get
   (Just num) <- return $ Map.lookup (Ident counterName) m
-  s2 <- return $ emitHead i (num + 1)
+  s2 <- return $ emitHead i (iplus num)
   return $ (s1 ++ s2 ++ s3, i)
 
 transProg :: Program -> Result
@@ -43,7 +43,7 @@ transStmt x = case x of
         return $ (s ++ ("\n" ++ (emitStore (num + 1))), i)
   SExp exp1 -> do
     (s, i) <- transExp exp1
-    return $ (s ++ emitPrint, i)
+    return $ (s ++ emitPrint, iplus i)
 
 iplus :: Integer -> Integer
 iplus i

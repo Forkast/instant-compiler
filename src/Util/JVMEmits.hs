@@ -36,9 +36,10 @@ emitPrint =
   ++ "\n  swap"
   ++ "\n  invokevirtual java/io/PrintStream/println(I)V"
 
-emitClass :: String
-emitClass =
-  ".class public Main"
+emitClass :: String -> String
+emitClass s =
+  ".class public "
+  ++ s
   ++ "\n.super java/lang/Object"
   ++ "\n.method public <init>()V"
   ++ "\n  aload_0"

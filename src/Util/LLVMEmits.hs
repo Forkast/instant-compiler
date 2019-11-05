@@ -17,7 +17,7 @@ emitLit integer = "add i32 0, " ++ show(integer)
 
 emitPrint :: Integer -> String
 emitPrint x =
-  "\n  call void @print(i32 %t" ++ show(x) ++ ")"
+  "\n  call void @printInt(i32 %t" ++ show(x) ++ ")"
 
 emitAlloc :: String -> String
 emitAlloc ident =

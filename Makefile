@@ -4,17 +4,21 @@ GRAM=src/Grammar/*.hs
 UTIL=src/Util/*.hs
 BDIR=build
 
-all: $(BDIR)/LLVMCompiler $(BDIR)/JVMCompiler
+all: $(BDIR) $(BDIR)/LLVMCompiler $(BDIR)/JVMCompiler
+
+$(BDIR):
+	mkdir -p $@
+	chmod +x insc_llvm
+	chmod +x insc_jvm
 
 $(BDIR)/LLVMCompiler: src/LLVMCompiler.hs $(UTIL) $(GRAM)
-	mkdir -p $(BDIR)
 	$(CC) $^ -o $@
 
 $(BDIR)/JVMCompiler: src/JVMCompiler.hs $(UTIL) $(GRAM)
-	mkdir -p $(BDIR)
 	$(CC) $^ -o $@
 
 .PHONY: clean
 
 clean:
-	rm -fr src/*.o src/Grammar/*.o src/Util/*.o src/*.hi src/Grammar/*.hi src/Util/*.hi $(BDIR)/LLVMCompiler $(BDIR)JVMCompiler
+	rm -f src/*.o src/Grammar/*.o src/Util/*.o src/*.hi src/Grammar/*.hi src/Util/*.hi
+	rm -fr build
