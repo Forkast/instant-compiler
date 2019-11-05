@@ -3,7 +3,9 @@
 FILENAME=$1
 FILE_NEXT=${FILENAME%.*}
 DIRNAME=$(dirname $FILENAME)
+tmpfile=$(mktemp llvm_compiler.XXXXXX)
 
-./build/LLVMCompiler ${FILENAME}
-llvm-as -o ${FILE_NEXT}.o ${FILE_NEXT}.ll
-llvm-link -o ${FILE_NEXT}.bc ${FILE_NEXT}.o lib/runtime.bc
+./LLVMCompiler ${FILENAME}
+llvm-as -o $tmpfile ${FILE_NEXT}.ll
+llvm-link -o ${FILE_NEXT}.bc $tmpfile lib/runtime.bc
+rm $tmpfile
