@@ -39,7 +39,7 @@ emitLoad ident =
 
 emitPrintH :: String
 emitPrintH =
-  "declare void @print(i32 %a)"
+  "declare void @printInt(i32)"
 
 emitHead :: String
 emitHead =
