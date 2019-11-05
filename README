@@ -7,4 +7,5 @@ dla JVM:  java -cp <nazwa klasy>
 2. Użyte biblioteki:
 Projekt w całości został napisany w Haskellu. Gramatyka została wygenerowana przy pomocy bnfc.
 3. Zastosowane optymalizacje:
-JVMCompiler sprawdza wielkość stosu każdego z podwyrażeń i wykonuje najpierw większe drzewo ze względu na wielkość stosu. 
+JVMCompiler sprawdza wielkość stosu każdego z podwyrażeń i wykonuje najpierw większe drzewo ze względu na wielkość stosu oraz używa odpowiednich typów poleceń dla małych liczb.
+
