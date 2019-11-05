@@ -1,4 +1,4 @@
-module LLVMSkel where
+module Util.LLVMSkel where
 
 import Control.Monad.State
 import Data.Map as Map

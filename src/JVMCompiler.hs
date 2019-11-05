@@ -4,12 +4,12 @@ import System.IO
 import System.Environment
 import Control.Monad.State
 import Data.Map as Map
-import LexInstant
-import ParInstant
-import AbsInstant
-import ErrM
+import Grammar.LexInstant
+import Grammar.ParInstant
+import Grammar.AbsInstant
+import Grammar.ErrM
 
-import JVMInstant
+import Util.JVMInstant
 
 main :: IO ()
 main = do

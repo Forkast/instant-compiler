@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -w #-}
 {-# OPTIONS -fglasgow-exts -cpp #-}
 {-# OPTIONS_GHC -fno-warn-incomplete-patterns -fno-warn-overlapping-patterns #-}
-module ParInstant where
+module Grammar.ParInstant where
 import AbsInstant
 import LexInstant
 import ErrM
