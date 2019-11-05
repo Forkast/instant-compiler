@@ -1,0 +1,10 @@
+1. Uruchomienie i kompilacja programu:
+Program kompilujemy poleceniem make, które zbuduje pliki wykonywalne w tym katalogu.
+Uruchamiamy przy pomocy plików znajdujących się w korzeniu projektu: insc_llvm oraz insc_jvm jako argument podając plik źródłowy *.ins. Jako wynik otrzymujemy odpowiednio pliki: "*.ll" i "*.bc" oraz "*.j" i "*.class" w katalogu źródłowym.
+Żeby uruchomiś skompilowane programy należy wykonać odpowiednio:
+dla LLVM: lli <program>.bc
+dla JVM:  java -cp <nazwa klasy>
+2. Użyte biblioteki:
+Projekt w całości został napisany w Haskellu. Gramatyka została wygenerowana przy pomocy bnfc.
+3. Zastosowane optymalizacje:
+JVMCompiler sprawdza wielkość stosu każdego z podwyrażeń i wykonuje najpierw większe drzewo ze względu na wielkość stosu. 
