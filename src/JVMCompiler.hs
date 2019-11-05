@@ -9,7 +9,7 @@ import Grammar.ParInstant
 import Grammar.AbsInstant
 import Grammar.ErrM
 
-import Util.JVMInstant
+import Util.JVMSkel
 
 main :: IO ()
 main = do

@@ -2,9 +2,9 @@
 {-# OPTIONS -fglasgow-exts -cpp #-}
 {-# OPTIONS_GHC -fno-warn-incomplete-patterns -fno-warn-overlapping-patterns #-}
 module Grammar.ParInstant where
-import AbsInstant
-import LexInstant
-import ErrM
+import Grammar.AbsInstant as AbsInstant
+import Grammar.LexInstant as LexInstant
+import Grammar.ErrM as ErrM
 import qualified Data.Array as Happy_Data_Array
 import qualified GHC.Exts as Happy_GHC_Exts
 import Control.Applicative(Applicative(..))

@@ -2,8 +2,8 @@ module Util.JVMSkel where
 
 import Control.Monad.State
 import Data.Map as Map
-import AbsInstant
-import ErrM
+import Grammar.AbsInstant
+import Grammar.ErrM
 import Data.Tuple
 import JVMEmits
 

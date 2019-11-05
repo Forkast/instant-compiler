@@ -24,9 +24,11 @@ emitSuf ODiv = "\n  idiv"
 
 emitLit :: Integer -> String
 emitLit integer
-    | integer == -1 = "  iconst_m1"
-    | integer >= 0 && integer <= 5 = "  iconst_" ++ (show integer)
-    | otherwise = "  ldc " ++ (show integer)
+  | integer == -1 = "  iconst_m1"
+  | integer >= 0 && integer <= 5 = "  iconst_" ++ (show integer)
+  | integer >= -128 && integer <= 127 = "  bipush " ++ (show integer)
+  | integer >= -32768 && integer <= 32767 = "  sipush " ++ (show integer)
+  | otherwise = "  ldc " ++ (show integer)
 
 emitPrint :: String
 emitPrint =
