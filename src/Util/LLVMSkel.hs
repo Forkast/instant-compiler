@@ -66,7 +66,10 @@ emitOp exp1 exp2 op = do
 
 emitReg :: Result
 emitReg = do
-  (Just num) <- get >>= (return . Map.lookup (Ident counterName))
+  m <- get
+  let num = case Map.lookup (Ident counterName) m of
+        (Just n) -> n
+        Nothing -> 0
   let ctr = num + 1
   modify $ \m -> Map.insert (Ident counterName) ctr m
   return ("\n  %t" ++ show ctr ++ " = ", ctr)

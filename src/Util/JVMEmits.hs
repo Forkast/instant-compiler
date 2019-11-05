@@ -1,4 +1,4 @@
-module JVMEmits where
+module Util.JVMEmits where
 
 data Op
     = OAdd

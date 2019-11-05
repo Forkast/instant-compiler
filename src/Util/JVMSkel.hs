@@ -5,7 +5,7 @@ import Data.Map as Map
 import Grammar.AbsInstant
 import Grammar.ErrM
 import Data.Tuple
-import JVMEmits
+import Util.JVMEmits
 
 type Value = (String, Integer)
 type Result = State (Map Ident Integer) Value
@@ -18,7 +18,9 @@ transProgram clas x = do
   s1 <- return $ emitClass clas
   (s3, i) <- transProg x
   m <- get
-  (Just num) <- return $ Map.lookup (Ident counterName) m
+  let num = case Map.lookup (Ident counterName) m of
+        (Just n) -> n
+        Nothing -> 0
   s2 <- return $ emitHead i (iplus num)
   return $ (s1 ++ s2 ++ s3, i)
 
@@ -35,7 +37,9 @@ transStmt x = case x of
   SAss ident exp1 -> do
     m <- get
     (s, i) <- transExp exp1
-    (Just num) <- return $ Map.lookup (Ident counterName) m
+    let num = case Map.lookup (Ident counterName) m of
+          (Just n) -> n
+          Nothing -> 0
     case Map.lookup ident m of
       (Just n) -> return $ (s ++ (emitStore n), i)
       Nothing -> do
