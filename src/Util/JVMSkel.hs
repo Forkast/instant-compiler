@@ -21,7 +21,7 @@ transProgram clas x = do
   let num = case Map.lookup (Ident counterName) m of
         (Just n) -> n
         Nothing -> 0
-  s2 <- return $ emitHead i (iplus num)
+  s2 <- return $ emitHead i (num + 1)
   return $ (s1 ++ s2 ++ s3, i)
 
 transProg :: Program -> Result
