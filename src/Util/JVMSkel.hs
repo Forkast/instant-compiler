@@ -41,7 +41,7 @@ transStmt x = case x of
           (Just n) -> n
           Nothing -> 0
     case Map.lookup ident m of
-      (Just n) -> return $ (s ++ (emitStore n), i)
+      (Just n) -> return $ (s ++ "\n" ++ (emitStore n), i)
       Nothing -> do
         put $ Map.insert (Ident counterName) (num + 1) $ Map.insert ident (num + 1) m
         return $ (s ++ ("\n" ++ (emitStore (num + 1))), i)
